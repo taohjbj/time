@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>时光</title>
+    <style>
+        body {
+            background-color: #cccccc;
+        }
+        .box {
+            width: 100%;
+            height: 200px;
+            margin: 0 auto;
+            font: 700 25px/200px "BankGothic Md BT";
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var test = document.getElementById("test");
+            var oldTime = new Date("2011/11/7");
+            setInterval(end,1000);
+            function end(old){
+                var nowTime = new Date();
+                var result = (nowTime.getTime() - oldTime.getTime()) / 1000;
+                var year = parseInt(result / 3600 / 24 / 365);
+                var month = parseInt(result / 3600 / 24 / 30 % 12);
+                var day = parseInt(result / 3600 / 24 % 24 );
+                var hour = parseInt(result / 3600 % 24);
+                var minute = parseInt(result / 60 % 60 );
+                var second = parseInt(result % 60);
+                hour < 10 ? hour = "0" + hour : hour;
+                day < 10 ? day = "0" + day : day;
+                minute < 10 ? minute = "0" + minute : minute;
+                second < 10 ? second = "0" + second : second;
+                test.innerHTML =year +" year "+ month +" month "+day +" day "+
+                        hour+ " hour " + minute +" minute "+ second+" second ";
+
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="box" id="test">
+</div>
+</body>
+</html>
